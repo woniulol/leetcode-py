@@ -46,17 +46,15 @@ class Solution:
             digits += 1
             res = x / (10**digits)
 
-        digits_reversed = 1
-        while digits_reversed <= digits:
-            cur_left: int = x // (10 ** (digits - 1))
-            cur_right: int = x % (10**digits_reversed)
-            if not cur_left == cur_right:
+        while 1 <= digits:
+            _t = 10 ** (digits - 1)
+            if not x // _t == x % 10:
                 return False
 
-            if cur_left != 0:
-                x %= cur_left * (10 ** (digits - 1))
+            if x % 10 != 0:
+                x %= x // _t * _t
 
-            x //= 10**digits_reversed
+            x //= 10
             digits -= 2
 
         return True
