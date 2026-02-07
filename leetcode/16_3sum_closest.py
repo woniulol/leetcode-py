@@ -4,9 +4,9 @@ from typing import List
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         # initial value to avoid condition check.
+        nums = sorted(nums)
         res: int = nums[0] + nums[1] + nums[-1]
         cur_diff: int = res - target
-        nums = sorted(nums)
 
         for i in range(0, len(nums) - 2):
             if i != 0 and nums[i] == nums[i - 1]:
